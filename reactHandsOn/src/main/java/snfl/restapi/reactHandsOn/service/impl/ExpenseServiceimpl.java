@@ -23,12 +23,13 @@ public class ExpenseServiceimpl implements ExpenseService {
     private final ModelMapper modelMapper;
     @Override
     public List<ExpenseDTO> getAllExpenses() {
-        //Call the repository method
+        //Call the repository  method
         List<ExpenseEntity> list = expenseRepository.findAll();
         log.info("Printing the data from the respository {}",list);
         //Convert the Entity Object to DTO Object
         List<ExpenseDTO> listOfExpenses  = list.stream().map(expenseEntity -> mapToExpenseDTO(expenseEntity)).collect(Collectors.toList());
         //Return the list
+        log.info("Successfull getAllExpenses");
         return listOfExpenses;
 
     }
